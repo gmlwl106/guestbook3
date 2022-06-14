@@ -9,8 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/guestbook3/delete/${gbVo.no }" method="get">
-		비밀번호  <input type="password" name="pw" value="">
+	<form action="/guestbook3/delete" method="get">
+		<input type="hidden" name="no" value="${gbVo.no }">
+		비밀번호  <input type="password" name="password" value="">
 		<button type="submit">확인</button>
 		<br>
 		<a href="/guestbook3/list">메인으로 돌아가기</a>

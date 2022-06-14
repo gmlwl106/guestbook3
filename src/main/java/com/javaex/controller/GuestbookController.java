@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.dao.GuestbookDao;
 import com.javaex.vo.GuestbookVo;
@@ -17,11 +16,13 @@ import com.javaex.vo.GuestbookVo;
 public class GuestbookController {
 	
 	//Guestbook 삭제
-	@RequestMapping(value="/delete/{no}", method= {RequestMethod.GET, RequestMethod.POST})
-	public String delete(@PathVariable("no") int no, @RequestParam("pw") String pw) {
+	@RequestMapping(value="/delete", method= {RequestMethod.GET, RequestMethod.POST})
+	public String delete(@ModelAttribute GuestbookVo gbVo) {
 		System.out.println("GuestbookController->delete()");
 		
 		GuestbookDao gbDao = new GuestbookDao();
+		int no = gbVo.getNo();
+		String pw = gbVo.getPassword();
 		gbDao.guestDelete(no, pw);
 		
 		return "redirect:/list";
