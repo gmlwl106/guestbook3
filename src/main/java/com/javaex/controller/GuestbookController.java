@@ -38,7 +38,7 @@ public class GuestbookController {
 		
 		model.addAttribute("gbVo", gbVo);
 		
-		return "/WEB-INF/views/deleteForm.jsp";
+		return "deleteForm";
 	}
 	
 	//Guestbook 글쓰기
@@ -63,6 +63,6 @@ public class GuestbookController {
 		model.addAttribute("gbList", gbList);
 		
 		
-		return "/WEB-INF/views/addList.jsp";
+		return "addList";
 	}
 }
