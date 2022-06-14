@@ -8,8 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.javaex.vo.GuestbookVo;
 
+
+@Repository
 public class GuestbookDao {
 
 	// 0. import java.sql.*;
@@ -102,7 +106,7 @@ public class GuestbookDao {
 	
 	//Guestbook 추가
 	public int guestInsert(GuestbookVo guestVo) {
-		int count = 0;
+		int count = -1;
 		getConnection();
 
 		try {
@@ -179,7 +183,9 @@ public class GuestbookDao {
 	
 	
 	//Guestbook 삭제
-	public void guestDelete(int delNo, String delPw) {
+	public int guestDelete(int delNo, String delPw) {
+		int count = -1;
+		
 		getConnection();
 		
 		try {
@@ -194,7 +200,7 @@ public class GuestbookDao {
 			pstmt.setInt(1, delNo);
 			pstmt.setString(2, delPw);
 
-			int count = pstmt.executeUpdate();
+			count = pstmt.executeUpdate();
 
 			// 4.결과처리
 			System.out.println("["+count+"건 삭제 되었습니다.]");
@@ -204,5 +210,6 @@ public class GuestbookDao {
 		}
 
 		close();
+		return count;
 	}
 }
