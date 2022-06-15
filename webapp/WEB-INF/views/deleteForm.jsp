@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/guestbook3/delete" method="get">
-		<input type="hidden" name="no" value="${gbVo.no }">
+	<form action="/guestbook3/delete/${gbVo.no }" method="get">
+		<input type="hidden" name="no" value="${no }">
 		비밀번호  <input type="password" name="password" value="">
 		<button type="submit">확인</button>
 		<br>

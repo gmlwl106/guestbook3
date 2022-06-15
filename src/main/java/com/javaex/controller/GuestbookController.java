@@ -49,9 +49,7 @@ public class GuestbookController {
 	public String deleteForm(@PathVariable("no") int no, Model model) {
 		System.out.println("GuestbookController->deleteForm()");
 		
-		GuestbookVo gbVo = gbService.getGuest(no);
-		
-		model.addAttribute("gbVo", gbVo);
+		model.addAttribute("no", no);
 		
 		return "deleteForm";
 	}
